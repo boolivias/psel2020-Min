@@ -13,7 +13,6 @@ class User extends UserModel
     {
         $data['user_acs_id'] = $this->defaultAccessID;
         $data['user_urlPhoto'] = $this->pathPhoto() . $this->namePhoto($data, $photo);
-        echo $this->namePhoto($data, $photo);
         if ($return = parent::insert($data, $returnID)) {
             $photo->store($this->pathPhoto(), $this->namePhoto($data, $photo));
         }
