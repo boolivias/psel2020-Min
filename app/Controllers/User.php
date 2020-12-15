@@ -35,4 +35,22 @@ class User extends BaseController
             }
         }
     }
+
+    public function editUser($id)
+    {
+        $user = model('App\Models\CRUD\User');
+        echo json_encode($user->find($id));
+        if ($this->request->getMethod() === 'post') {
+            $session = session();
+            $editor = $session->get('credentials')['id'];
+            if ($editor == $id || $user->verifyPermission($editor, 'edit')) {
+                $data = $this->request->getPost();
+                if ($user->update($id, $data)) {
+                    echo json_encode(array('msg' => 'Dados atualizados'));
+                }
+            } else {
+                echo json_encode(array('msg' => 'Você não tem permissão para alterar os dados deste usuário'));
+            }
+        }
+    }
 }

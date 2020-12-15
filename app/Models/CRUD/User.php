@@ -38,6 +38,38 @@ class User extends UserModel
         return password_verify($password, $result->user_password) ? $result->user_id : false;
     }
 
+    /**
+     * Verifica se o usuário tem uma permissão
+     * @param int $userID
+     * @param String $permission Permissão a ser verificada
+     * @return bool Verdadeiro se possui a permissão, falso se não possui.
+     */
+    public function verifyPermission($userID, $permission)
+    {
+        $builder = db_connect()->table('tb_access');
+        $builder->select('*')
+            ->where(
+                'acs_id',
+                // Subquery para puxar o ID do nível de acesso do usuário
+                $builder->select('user_acs_id')
+                    ->from('tb_user')
+                    ->where('user_id', $userID)->get()->getFirstRow()->user_acs_id
+            );
+
+        $result = $builder->get()->getFirstRow();
+
+        switch ($permission) {
+            case 'edit':
+                return $result->acs_edit == 1;
+
+            case 'changeAccess':
+                return $result->acs_changeAccess == 1;
+
+            case 'changeStatus':
+                return $result->acs_changeStatus == 1;
+        }
+    }
+
     public function pathPhoto()
     {
         return $this->defaultPathPhoto;
