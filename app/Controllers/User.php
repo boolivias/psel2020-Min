@@ -6,7 +6,20 @@ class User extends BaseController
 {
     public function index()
     {
-        echo 'User index';
+        if ($this->request->getMethod() === 'post') {
+            $user = model('App\Models\CRUD\User');
+            $data = $this->request->getPost();
+            if ($id = $user->credentialIsValid($data['user_credential'], $data['user_password'])) {
+                $session = session();
+                $session->set('credentials', [
+                    'logged_in' => true,
+                    'id'        => $id
+                ]);
+                echo 'logou';
+            } else {
+                echo json_encode(array('msg' => 'Crendenciais inválidas'));
+            }
+        }
     }
 
     public function newUser()
