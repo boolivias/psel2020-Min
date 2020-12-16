@@ -1,0 +1,12 @@
+:root{
+    --bg-white: #faf9f9;
+    --primary-white: #fdfffc;
+    --second-white: #eeeeee;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
