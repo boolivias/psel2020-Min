@@ -20,6 +20,6 @@ function loadView($view, array $data = null, bool $header = false)
     $data['css'] = $list_css;
     $data['js'] = $list_js;
     $data['header'] = $header;
-    $data['view'] = $view . '/form';
+    $data['view'] = $view;
     echo view('structure/head', $data);
 }

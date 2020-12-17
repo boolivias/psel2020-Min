@@ -1,4 +1,4 @@
-<?php include 'app/Views/User/edit/input.php' ?>
+<?php include 'app/Views/User/CRUD/edit/input.php' ?>
 <div class="container">
     <h1>Editar dados cadastrados</h1>
     <div class="row">
