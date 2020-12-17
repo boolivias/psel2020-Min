@@ -2,9 +2,8 @@
     position: relative;
     padding-top: 1rem;
     overflow: hidden;
-    padding-left: 0;
-    padding-right: 0;
 }
+
 .form-group-login::after{
     content: " ";
     position: absolute;
@@ -16,22 +15,9 @@
 }
 
 .form-group-login.focused-effect::after{
-    width: 100%;
-    left: 0;
+    width: calc(100% - 30px);
+    left: 15px;
     background-color: #7B2CBF;
-}
-
-.form-control{
-    position: relative;
-}
-
-.form-group-login > .form-control:hover{
-    border-color: var(--purple-primary, #7B2CBF);
-}
-
-.form-group-login > .form-control:focus{
-    color: var(--text-color-gray, #5c5c5c)!important;
-    border-color: var(--purple-primary, #7B2CBF);
 }
 
 .form-group-login > .form-control{
@@ -40,7 +26,14 @@
     border-radius: 0;
     border-bottom: 1.5px solid var(--text-color-gray-secondary, #A0A0A0);
     transition: all 0.3s ease-in;
-    color: var(--text-color-gray-secondary, #8b8b8b);
+}
+
+.form-group-login > .form-control:hover{
+    border-color: var(--purple-primary, #7B2CBF);
+}
+
+.form-group-login > .form-control:focus{
+    border-color: var(--purple-primary, #7B2CBF);
 }
 
 .form-group-login > .form-control:focus{
@@ -53,17 +46,79 @@
     font-weight: bold;
     margin: 0;
     z-index: 0;
-    left: .5rem;
+    left: calc(.5rem + 15px);
     bottom: .375rem;
     position: absolute;
     display: flex;
     transition: transform 0.3s, bottom 0.2s, left 0.2s, font-size 0.2s ease-out;
 }
 
-.form-group-login > label.focused-effect{
-    bottom: calc(1.5em + .75rem + 2px);
-    left: .3rem;
-    font-size: 0.7rem;
+.form-group-login > label.focused-effect, .form-group > label.focused-effect{
     transform: none;
     color: var(--purple-primary, #7B2CBF);
+}
+
+.form-group-login > label.focused-effect{
+    font-size: .7rem;
+    bottom: calc(1.5em + .75rem + 2px);
+    left: calc(.3rem + 15px);
+}
+
+.form-group{
+    transition: transform 0.2s ease-in;
+}
+
+.form-control{
+    position: relative;
+    color: var(--text-color-gray-secondary, #8b8b8b);
+}
+
+.form-control:focus{
+    color: var(--text-color-gray, #5c5c5c)!important;
+}
+
+.form-group.focused-effect{
+    transform: scale(1.03);
+}
+
+.form-group > .form-control{
+    font-size: 1rem;
+    padding: .5rem .7rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: .3rem;
+    display: block;
+    opacity: .7;
+    transition: all 0.2s ease-in;
+}
+
+.form-group > .form-control:focus{
+    color: var(--text-color-gray);
+    opacity: .9;
+    box-shadow: none;
+}
+.form-group > .form-control:focus:not('readonly'){
+    border-color: var(--purple-primary);
+    opacity: 1;
+}
+
+.form-group label{
+    position: absolute;
+    font-weight: bold;
+    left: calc(15px + .7rem);
+    top: .5rem;
+    font-size: .85rem;
+    background-color: transparent;
+    padding: 0px 2px;
+    transition: all ease-in .1s;
+}
+.form-group > label.focused-effect{
+    font-size: .9rem;
+    z-index: 1;
+    left: calc(15px + .5rem);
+    top: -.7rem;
+}
+
+.custom-file-label{
+    width: calc(100% - 30px);
 }

@@ -13,7 +13,7 @@
                                 'class_form' => array('d-flex', 'flex-column'),
                                 'submit' => array(
                                     'text'  => 'Entrar',
-                                    'class' => array('btn', 'btn-login', 'mx-auto', 'rounded', 'mt-5')
+                                    'class' => array('btn', 'btn-login', 'ml-auto', 'rounded', 'mt-5')
                                 )
                             )); ?>
                         </div>

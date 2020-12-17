@@ -6,7 +6,7 @@ $inputs = array(
                 'type'      => 'text',
                 'name'      => 'user_credential',
                 'class'     => array('form-control'),
-                'class_div' => array('mx-auto', 'form-group-login'),
+                'class_div' => array('col', 'mx-auto', 'form-group-login'),
                 'attr'      => array(),
                 'name_ui'   => 'CPF ou E-mail'
             )
@@ -18,7 +18,7 @@ $inputs = array(
                 'type'      => 'password',
                 'name'      => 'user_password',
                 'class'     => array('form-control', 'mt-3'),
-                'class_div' => array('mx-auto', 'form-group-login'),
+                'class_div' => array('col', 'mr-auto', 'form-group-login'),
                 'attr'      => array(),
                 'name_ui'   => 'Senha'
             )
@@ -45,7 +45,7 @@ $inputs_register = array(
                 'type'      => 'text',
                 'name'      => 'user_name',
                 'class'     => array('form-control'),
-                'class_div' => array('col', 'form-group-login', 'mr-2'),
+                'class_div' => array('col', 'form-group-login'),
                 'attr'      => array(),
                 'name_ui'   => 'Nome'
             ),
@@ -65,7 +65,7 @@ $inputs_register = array(
                 'type'      => 'password',
                 'name'      => 'user_password',
                 'class'     => array('form-control'),
-                'class_div' => array('col', 'form-group-login', 'mr-2'),
+                'class_div' => array('col', 'form-group-login'),
                 'attr'      => array(),
                 'name_ui'   => 'Senha'
             ),
@@ -85,6 +85,7 @@ $inputs_register = array(
                 'type'      => 'file',
                 'name'      => 'user_email',
                 'class'     => array('custom-file-input'),
+                'class_label' => array('mx-auto'),
                 'class_div' => array('col', 'custom-file', 'mt-4'),
                 'attr'      => array(),
                 'name_ui'   => 'Escolha uma foto de perfil'
