@@ -1,0 +1,138 @@
+.login-widget{
+    background-color: var(--bg-white, #faf9f9);
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-widget > div{
+    margin: auto;
+    min-width: 50vw;
+    border-radius: 7px;
+    background-color: var(--primary-white, #fdfffc);
+}
+
+.login-widget .carousel-inner{
+    padding: 20px;
+}
+
+.register-widget-lateral::before{
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    bottom: 0;
+    width: calc(100% + 20px);
+    z-index: 1;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, var(--gradient-primary) 0%, var(--gradient-secondary)  51%, var(--gradient-primary)  100%);
+}
+
+.register-widget-lateral *{
+    position: relative;
+    z-index: 1;
+    color: var(--second-white);
+}
+
+.register-widget-lateral > h1{
+    font-weight: bold;
+    color: var(--primary-white);
+}
+
+.register-widget-lateral > a{
+    font-size: 3rem;
+    float: right;
+}
+
+.register-widget-lateral > a:hover{
+    text-decoration: none;
+    color: var(--primary-white);
+}
+
+.widget-lateral{
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    position: fixed;
+    color: var(--text-color-gray);
+    transition: all 0.4s ease-out;
+    background-color: var(--primary-white);
+}
+
+.widget-lateral-open{
+    right: 0;
+}
+
+.widget-lateral-content{
+    padding: 0 2.5rem;
+}
+
+.widget-lateral-head button.close{
+    position: absolute;
+    left: 25px;
+}
+
+.widget-lateral-head p {
+    color:black;
+    margin: 0;
+    line-height: normal;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.widget-lateral-head > .row{
+    padding:  .7rem 0;
+    position: relative;
+}
+
+.widget-lateral-header > .row:first-child{
+    font-size: 1.4rem;
+}
+
+.widget-lateral-header img{
+    max-width: 250px;
+    margin-bottom: 1.5rem;
+}
+
+.widget-lateral-header p{
+    font-weight: bold;
+}
+
+.widget-lateral-header p > span{
+    color: var(--text-color-gray-secondary);
+    font-weight: normal;
+}
+
+.widget-lateral-options{
+    width: calc(100% + 5rem);
+    margin-left: -2.5rem;
+}
+
+.widget-lateral-options .list-group-item{
+    background-color: transparent;
+    opacity: 0.8;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.widget-lateral-options .list-group-item:hover{
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.widget-lateral-options .list-group-item::after{
+    content: "\203A";
+    right: 1.5rem;
+    position: absolute;
+    font-size: 2rem;
+    top: calc(.75rem - 1rem); /*CENTRALIZAÇÃO: Sobe metade do unicode e desce o padding superior*/
+}
+
+.widget-lateral-options .list-group-item:hover span,.widget-lateral-options .list-group-item:hover::after{
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, var(--gradient-primary) 0%, var(--gradient-secondary)  51%, var(--gradient-primary)  100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}

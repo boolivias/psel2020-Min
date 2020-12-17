@@ -1,0 +1,19 @@
+:root{
+    --bg-white: #faf9f9;
+    --primary-white: #fdfffc;
+    --second-white: #eeeeee;
+    --purple-primary: #7B2CBF;
+    --purple-secondary: #240245;
+    --gradient-primary: #DA22FF;
+    --gradient-secondary: #9733EE;
+    --text-color-gray: #5c5c5c;
+    --text-color-gray-secondary: #8b8b8b;
+    --text-color-gray-bright: #cecece;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}

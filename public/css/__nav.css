@@ -1,0 +1,47 @@
+nav{
+    position: relative;
+}
+
+nav p{
+    padding: 0!important;
+    margin: 0!important;
+}
+
+.nav-img{
+    max-width: 50px;
+}
+.nav-img > img{
+    max-width: 50px;
+}
+
+nav .user-info-label{
+    color: var(--second-white);
+    font-weight: bold;
+}
+
+nav .user-info-values{
+    font-weight: normal;
+    color: var(--text-color-gray-bright);
+}
+
+.nav-link{
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover{
+    transform: scale(1.02);
+    background-size: 200% auto;
+    background-image: linear-gradient(to right, var(--gradient-primary) 0%, var(--gradient-secondary)  51%, var(--gradient-primary)  100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    -moz-text-fill-color: transparent;
+}
+
+.nav-item-logout:hover{
+     -webkit-text-fill-color: unset!important; 
+    -moz-text-fill-color: unset!important;
+    background-image: none;
+    color: red!important;
+}
