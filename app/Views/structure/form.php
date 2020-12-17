@@ -13,11 +13,13 @@
 
     if (isset($cancel)) {
         $attr_string = '';
-        foreach ($cancel['attr'] as $name => $value) {
-            $attr_string .= $name . '="' . $value . '" ';
+        if (isset($cancel['attr'])) {
+            foreach ($cancel['attr'] as $name => $value) {
+                $attr_string .= $name . '="' . $value . '" ';
+            }
         }
         echo '
-        <a href="' . $cancel['href'] . '" class="' . implode(' ', $cancel['class'] ?? array()) . '" ' . $attr_string . '>' . $cancel['text'] . '</a>';
+        <a href="' . ($cancel['href'] ?? '') . '" class="' . implode(' ', $cancel['class'] ?? array()) . '" ' . $attr_string . '>' . $cancel['text'] . '</a>';
     }
 
     if (isset($submit)) {

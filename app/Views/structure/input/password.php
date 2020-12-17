@@ -1,5 +1,5 @@
 <?php
 $attr = array(
     'type' => 'password',
-    'others' => array()
+    'others' => array_merge($attr, array())
 );
