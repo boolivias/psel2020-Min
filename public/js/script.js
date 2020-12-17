@@ -55,4 +55,12 @@ $('window').ready(() => {
 
         $(this).addClass('invisible');
     });
+
+    $('*[data-event="openWidget"]').click(function () {
+        $($('.widget-lateral')[0]).addClass('widget-lateral-open');
+    });
+
+    $('*[data-event="closeWidget"]').click(function () {
+        $($('.widget-lateral-open')[0]).removeClass('widget-lateral-open');
+    });
 });
