@@ -5,5 +5,5 @@ $attr = array(
 );
 
 $attr_label = array(
-    'class' => array('custom-file-label')
+    'class' => array_merge($class_label, array('custom-file-label'))
 );
