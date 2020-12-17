@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?= $header ? $this->include('estrutura/header') : '' ?>
+    <?= $header ? $this->include('structure/header') : '' ?>
 
     <?= $view ? $this->include($view) : '' ?>
 

@@ -63,4 +63,10 @@ $('window').ready(() => {
     $('*[data-event="closeWidget"]').click(function () {
         $($('.widget-lateral-open')[0]).removeClass('widget-lateral-open');
     });
+
+    $('.nav-item').click(function () {
+        $($('.active')[0]).removeClass('active');
+
+        $(this).addClass('active');
+    })
 });

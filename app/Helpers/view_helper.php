@@ -8,7 +8,8 @@ function loadView($view, array $data = null, bool $header = false)
         '__all.css',
         '__widgets.css',
         '__input.css',
-        '__button.css'
+        '__button.css',
+        '__nav.css'
     );
 
     $list_js = array(
