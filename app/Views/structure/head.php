@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <?= $header ? $this->include('structure/header') : '' ?>
+    <?= $header ? view('structure/header', $data['data']) : '' ?>
 
     <?= $view ? view($view, array('data' => $data['data'])) : '' ?>
 

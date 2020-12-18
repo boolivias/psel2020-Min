@@ -70,9 +70,11 @@ class User extends BaseController
 
     public function editUser($id)
     {
+        $session = session();
         $user = model('App\Models\CRUD\User');
+        $data_view['user'] =
+            (array) $user->getByID($session->get('credentials')['id']);
         if ($this->request->getMethod() === 'post') {
-            $session = session();
             $editor = $session->get('credentials')['id'];
             if ($editor == $id || $user->verifyPermission($editor, 'edit')) {
                 $data = $this->request->getPost();
@@ -84,7 +86,7 @@ class User extends BaseController
             }
         }
 
-        loadView('User/edit', array(), true);
+        loadView('User/edit', $data_view, true);
     }
 
     private function createSession($id)
