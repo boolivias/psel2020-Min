@@ -36,8 +36,8 @@ Determina as especificações do form e as estruturas html exclusivas que ficam 
 
 ##### 2. input.php
 Composta somente por um array, nele é especificado cada input e suas particularidades, é também determinado o layout. Os elementos que estão juntos no indice *elementos* serão renderizados lado a lado.
-![inputs num mesmo indice elementos](https://i.ibb.co/6NLhLV6/image.png)
 ![inputs renderizados](https://i.ibb.co/NT63r2w/image.png)
+![inputs num mesmo indice elementos](https://i.ibb.co/6NLhLV6/image.png)
 
 ### Bugs
 #### 1. input.php
