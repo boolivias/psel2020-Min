@@ -1,7 +1,7 @@
 <?php
 
 
-function loadView($view, array $data = null, bool $header = false)
+function loadView($view, array $dt = array(), bool $header = false)
 {
     $list_css = array(
         'bootstrap/bootstrap.min.css',
@@ -22,5 +22,6 @@ function loadView($view, array $data = null, bool $header = false)
     $data['js'] = $list_js;
     $data['header'] = $header;
     $data['view'] = $view;
+    $data['data'] = array('data' => $dt);
     echo view('structure/head', $data);
 }

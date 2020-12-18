@@ -1,6 +1,6 @@
 <?php include 'app/Views/User/CRUD/login/input.php';
 echo view('structure/form', array(
-    'action' => '',
+    'action' => site_url('user/index'),
     'inputs' => $inputs,
     'class_form' => array('d-flex', 'flex-column'),
     'submit' => array(

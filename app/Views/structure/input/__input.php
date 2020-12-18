@@ -11,4 +11,7 @@
                                                                                                                                 }
                                                                                                                             }
                                                                                                                             ?> />
+    <div class="text-danger error-report <?= isset($error) ? 'visible' : 'invisible' ?>">
+        <?= $error ?? '' ?>
+    </div>
 </div>

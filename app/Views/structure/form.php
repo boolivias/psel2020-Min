@@ -1,10 +1,10 @@
-<form action="<?= $action ?>" method="post" class="<?= implode(' ', $class_form ?? array()) ?>">
+<form action="<?= $action ?>" method="post" class="<?= implode(' ', $class_form ?? array()) ?>" enctype="multipart/form-data">
     <?php
     foreach ($inputs as $row) { ?>
         <div class="row">
             <?php
             foreach ($row['elements'] as $element) {
-                echo view('structure/input/__input', $element);
+                echo view('structure/input/__input', array_merge($element));
             }
             ?>
         </div>

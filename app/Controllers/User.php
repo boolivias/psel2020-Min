@@ -4,22 +4,64 @@ namespace App\Controllers;
 
 class User extends BaseController
 {
+    public function __construct()
+    {
+        helper('view');
+        helper('form');
+    }
+
+    public function logout()
+    {
+        $session = session();
+        $session->destroy();
+        return redirect()->to(base_url() . '/user/index');
+    }
+
     public function index()
     {
+        if ($this->isLogged()) {
+            return $this->loggedRedirect();
+        }
+
+        $data_view = array();
+
         if ($this->request->getMethod() === 'post') {
             $user = model('App\Models\CRUD\User');
             $data = $this->request->getPost();
             if ($id = $user->credentialIsValid($data['user_credential'], $data['user_password'])) {
-                $session = session();
-                $session->set('credentials', [
-                    'logged_in' => true,
-                    'id'        => $id
-                ]);
-                echo 'logou';
+                if ($user->isActive($id)) {
+                    $this->createSession($id);
+                    return $this->loggedRedirect();
+                } else {
+                    $data_view['msg'] = 'Sua conta está inativa, contate um administrador';
+                }
             } else {
-                echo json_encode(array('msg' => 'Crendenciais inválidas'));
+                $data_view['msg'] = 'Crendenciais inválidas';
             }
         }
+
+        loadView('User/index', $data_view);
+    }
+
+    public function home()
+    {
+        $this->verifyLogged();
+
+        $session = session();
+        return $this->editUser($session->get('credentials')['id']);
+    }
+
+    public function dashboard()
+    {
+        $this->verifyLogged();
+
+        $session = session();
+        $user = model('App\Models\CRUD\User');
+
+        if (!($user->verifyPermission($session->get('credentials')['id'], 'dashboard'))) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        loadView('Admin/index', array(), true);
     }
 
     public function newUser()
@@ -28,18 +70,20 @@ class User extends BaseController
             $user = model('App\Models\CRUD\User');
             $data = $this->request->getPost();
             $photo = $this->request->getFile('user_photo');
-            if ($user->insert($data, $photo)) {
-                echo '</br>cadastrou';
+            if ($id = $user->insert($data, $photo)) {
+                $this->createSession($id);
+                return redirect()->to(base_url() . '/user/home');
             } else {
-                echo "<pre>" . json_encode($user->errors(), JSON_PRETTY_PRINT) . "</pre>";
+                $data_view['errors'] = $user->errors();
             }
         }
+        $data_view['form_new_active'] = true;
+        loadView('User/index', $data_view);
     }
 
     public function editUser($id)
     {
         $user = model('App\Models\CRUD\User');
-        echo json_encode($user->find($id));
         if ($this->request->getMethod() === 'post') {
             $session = session();
             $editor = $session->get('credentials')['id'];
@@ -51,6 +95,41 @@ class User extends BaseController
             } else {
                 echo json_encode(array('msg' => 'Você não tem permissão para alterar os dados deste usuário'));
             }
+        }
+
+        loadView('User/edit', array(), true);
+    }
+
+    private function createSession($id)
+    {
+        $session = session();
+        $session->set('credentials', [
+            'logged_in' => true,
+            'id'        => $id
+        ]);
+    }
+
+    private function isLogged()
+    {
+        $session = session();
+        return $session->get('credentials')['logged_in'];
+    }
+
+    private function verifyLogged()
+    {
+        if ($this->isLogged()) {
+            return redirect()->to(base_url() . '/user/index');
+        }
+    }
+
+    private function loggedRedirect()
+    {
+        $session = session();
+        $user = model('App\Models\CRUD\User');
+        if ($user->verifyPermission($session->get('credentials')['id'], 'dashboard')) {
+            return redirect()->to(base_url() . '/user/dashboard');
+        } else {
+            return redirect()->to(base_url() . '/user/home');
         }
     }
 }

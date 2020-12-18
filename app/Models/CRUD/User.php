@@ -12,6 +12,7 @@ class User extends UserModel
     public function insert($data = null, $photo = null, bool $returnID = true)
     {
         $data['user_acs_id'] = $this->defaultAccessID;
+        $data['user_status'] = 1;
         $data['user_urlPhoto'] = $this->pathPhoto() . $this->namePhoto($data, $photo);
         if ($return = parent::insert($data, $returnID)) {
             $photo->store($this->pathPhoto(), $this->namePhoto($data, $photo));
@@ -35,7 +36,7 @@ class User extends UserModel
 
         $result = $builder->get()->getFirstRow();
 
-        return password_verify($password, $result->user_password) ? $result->user_id : false;
+        return $result && password_verify($password, $result->user_password) ? $result->user_id : false;
     }
 
     /**
@@ -58,6 +59,8 @@ class User extends UserModel
 
         $result = $builder->get()->getFirstRow();
 
+        var_dump($result->acs_dashboard == 1);
+
         switch ($permission) {
             case 'edit':
                 return $result->acs_edit == 1;
@@ -67,7 +70,16 @@ class User extends UserModel
 
             case 'changeStatus':
                 return $result->acs_changeStatus == 1;
+
+            case 'dashboard':
+                return $result->acs_dashboard == 1;
         }
+    }
+
+    public function isActive($id)
+    {
+        $u = parent::where('user_id', $id)->get()->getFirstRow();
+        return $u && $u->user_status == 1;
     }
 
     public function pathPhoto()

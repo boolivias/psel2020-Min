@@ -8,6 +8,6 @@ class AccessModel extends Model
 {
     protected $table = 'tb_access';
     protected $primaryKey = 'acs_id';
-    protected $allowedFields = ['acs_name', 'acs_edit', 'acs_changeAccess', 'acs_changeStatus'];
+    protected $allowedFields = ['acs_name', 'acs_dashboard', 'acs_edit', 'acs_changeAccess', 'acs_changeStatus'];
     protected $returnType = 'object';
 }

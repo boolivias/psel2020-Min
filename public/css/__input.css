@@ -1,7 +1,7 @@
 .form-group-login{
     position: relative;
     padding-top: 1rem;
-    overflow: hidden;
+    margin-bottom: .8rem;
 }
 
 .form-group-login::after{
@@ -121,4 +121,12 @@
 
 .custom-file-label{
     width: calc(100% - 30px);
+}
+
+.error-report{
+    font-size: .8rem;
+    position: absolute;
+    left: calc(15px + .3rem);
+    top: 100%;
+    max-width: calc(100% - 30px - .3rem);
 }

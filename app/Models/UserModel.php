@@ -8,7 +8,7 @@ class UserModel extends Model
 {
     protected $table = 'tb_user';
     protected $primaryKey = 'user_id';
-    protected $allowedFields = ['user_cpf', 'user_name', 'user_email', 'user_password', 'user_urlPhoto', 'user_acs_id'];
+    protected $allowedFields = ['user_cpf', 'user_name', 'user_email', 'user_password', 'user_urlPhoto', 'user_status', 'user_acs_id'];
     protected $returnType = 'object';
     protected $beforeInsert = ['encryptPass'];
 
@@ -20,7 +20,7 @@ class UserModel extends Model
         'confirmPass'   => 'required_with[user_password]|matches[user_password]',
         'user_urlPhoto' => 'required',
         'user_acs_id'   => 'is_not_unique[tb_access.acs_id]',
-        'user_urlPhoto' => 'mime_in[user_photo,image/png,image/jpg,image/jpeg]|max_size[user_photo,5000]'
+        'user_urlPhoto' => 'uploaded[user_photo]|mime_in[user_photo,image/png,image/jpg,image/jpeg]|max_size[user_photo,5000]'
     ];
 
     protected $validationMessages = [
@@ -33,7 +33,7 @@ class UserModel extends Model
         'user_name' => [
             'required'      => 'Campo obrigatório',
             'alpha_space'   => 'Nome inválido',
-            'min_length[6]' => 'Nome inválido'
+            'min_length' => 'O nome deve ter mais de 6 caracteres'
         ],
         'user_email' => [
             'required'    => 'Campo obrigatório',
@@ -49,7 +49,8 @@ class UserModel extends Model
             'matches'       => 'Confirmação de senha incorreta'
         ],
         'user_urlPhoto' => [
-            'mime_in'  => 'Obrigatório o envio de uma foto do usuário',
+            'uploaded' => 'Obrigatório o envio de uma foto do usuário',
+            'mime_in'  => 'A foto em alguma das extensões: .png, .jpg, .jpeg',
             'max_size' => 'A imagem ultrapassa o tamanho de 5 MB'
         ],
         'user_acs_id' => [

@@ -17,3 +17,11 @@
     border: 0;
     vertical-align: baseline;
 }
+
+.body{
+    margin-top: calc(3rem + 1rem);
+}
+
+.body.h-100{
+    height: calc(100vh - 3rem - 1rem)!important;
+}

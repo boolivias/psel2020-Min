@@ -15,7 +15,7 @@
 <body>
     <?= $header ? $this->include('structure/header') : '' ?>
 
-    <?= $view ? $this->include($view) : '' ?>
+    <?= $view ? view($view, array('data' => $data['data'])) : '' ?>
 
     <?php foreach ($js as $file_js) { ?>
         <script src="<?= base_url('public/js') . '/' . $file_js ?>"></script>

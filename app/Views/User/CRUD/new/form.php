@@ -1,6 +1,6 @@
 <?php include 'app/Views/User/CRUD/new/input.php';
 echo view('structure/form', array(
-    'action' => '',
+    'action' => site_url('user/newuser'),
     'inputs' => $inputs,
     'class_form' => array(),
     'submit' => array(

@@ -69,4 +69,10 @@ $('window').ready(() => {
 
         $(this).addClass('active');
     })
+
+    $('form').submit(function () {
+        $('*[data-masked="true"]').each(function (i, element) {
+            $(element).unmask();
+        })
+    })
 });

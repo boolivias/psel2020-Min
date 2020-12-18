@@ -8,6 +8,7 @@ $inputs = array(
                 'class'     => array('form-control'),
                 'class_div' => array('col', 'mx-auto', 'form-group-login'),
                 'attr'      => array(),
+                'value'     => set_value('user_credential'),
                 'name_ui'   => 'CPF ou E-mail'
             )
         )
@@ -20,6 +21,8 @@ $inputs = array(
                 'class'     => array('form-control', 'mt-3'),
                 'class_div' => array('col', 'mr-auto', 'form-group-login'),
                 'attr'      => array(),
+                'error'     => $msg ?? null,
+                'value'     => '',
                 'name_ui'   => 'Senha'
             )
         )
