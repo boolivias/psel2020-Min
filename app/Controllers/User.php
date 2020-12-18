@@ -51,19 +51,6 @@ class User extends BaseController
         return $this->editUser($session->get('credentials')['id']);
     }
 
-    public function dashboard()
-    {
-        $this->verifyLogged();
-
-        $session = session();
-        $user = model('App\Models\CRUD\User');
-
-        if (!($user->verifyPermission($session->get('credentials')['id'], 'dashboard'))) {
-            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
-        }
-        loadView('Admin/index', array(), true);
-    }
-
     public function newUser()
     {
         if ($this->request->getMethod() === 'post') {
@@ -127,7 +114,7 @@ class User extends BaseController
         $session = session();
         $user = model('App\Models\CRUD\User');
         if ($user->verifyPermission($session->get('credentials')['id'], 'dashboard')) {
-            return redirect()->to(base_url() . '/user/dashboard');
+            return redirect()->to(base_url() . '/admin/index');
         } else {
             return redirect()->to(base_url() . '/user/home');
         }
