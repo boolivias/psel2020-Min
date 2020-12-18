@@ -21,6 +21,16 @@ class User extends UserModel
         return $return;
     }
 
+    public function getByID($id)
+    {
+        $builder = db_connect()->table('tb_user');
+        $builder->select('user_id, user_name, user_cpf, user_urlPhoto, user_cpf, user_status, acs_name')
+            ->where('user_id', $id)
+            ->join('tb_access', 'tb_access.acs_id = tb_user.user_acs_id', 'left');
+
+        return $builder->get()->getFirstRow();
+    }
+
     /**
      * Verifica se as credenciais são válidas
      * @param String $credential pode ser CPF ou E-mail
