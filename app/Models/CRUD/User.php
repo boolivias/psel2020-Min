@@ -59,8 +59,6 @@ class User extends UserModel
 
         $result = $builder->get()->getFirstRow();
 
-        var_dump($result->acs_dashboard == 1);
-
         switch ($permission) {
             case 'edit':
                 return $result->acs_edit == 1;
