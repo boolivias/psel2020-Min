@@ -4,7 +4,11 @@
         <div class="row">
             <?php
             foreach ($row['elements'] as $element) {
-                echo view('structure/input/__input', array_merge($element));
+                if ($element['type'] != 'select') {
+                    echo view('structure/input/__input', array_merge($element));
+                } else {
+                    echo view('structure/input/select', array_merge($element));
+                }
             }
             ?>
         </div>

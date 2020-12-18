@@ -21,10 +21,19 @@ class User extends UserModel
         return $return;
     }
 
+    public function getAll()
+    {
+        $builder = db_connect()->table('tb_user');
+        $builder->select('user_id, user_name, user_email, user_cpf, user_urlPhoto, user_cpf, user_status, acs_name')
+            ->join('tb_access', 'tb_access.acs_id = tb_user.user_acs_id', 'left');
+
+        return $builder->get()->getResultArray();
+    }
+
     public function getByID($id)
     {
         $builder = db_connect()->table('tb_user');
-        $builder->select('user_id, user_name, user_cpf, user_urlPhoto, user_cpf, user_status, acs_name')
+        $builder->select('user_id, user_name, user_email, user_cpf, user_urlPhoto, user_cpf, user_status, acs_name')
             ->where('user_id', $id)
             ->join('tb_access', 'tb_access.acs_id = tb_user.user_acs_id', 'left');
 

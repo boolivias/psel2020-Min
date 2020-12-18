@@ -57,7 +57,18 @@ $('window').ready(() => {
     });
 
     $('*[data-event="openWidget"]').click(function () {
-        $($('.widget-lateral')[0]).addClass('widget-lateral-open');
+        var widget = $('.widget-lateral')[0];
+        $(widget).addClass('widget-lateral-open');
+        $($(widget).children('.widget-lateral-content')).html('<h1>Carregando...</h1>');
+
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if (request.readyState == 4 && request.status == 200) {
+                $($(widget).children('.widget-lateral-content')).html(request.responseText);
+            }
+        }
+        request.open("GET", "http://localhost/psel2020-Min/widget/index/" + $(this).attr('data-value'));
+        request.send(null);
     });
 
     $('*[data-event="closeWidget"]').click(function () {

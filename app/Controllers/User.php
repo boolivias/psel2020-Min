@@ -79,10 +79,13 @@ class User extends BaseController
             if ($editor == $id || $user->verifyPermission($editor, 'edit')) {
                 $data = $this->request->getPost();
                 if ($user->update($id, $data)) {
-                    echo json_encode(array('msg' => 'Dados atualizados'));
+                    echo "<script>
+                    alert('Dados atualizados');
+                    </script>";
                 }
             } else {
-                echo json_encode(array('msg' => 'Você não tem permissão para alterar os dados deste usuário'));
+                echo $this->home();
+                echo '<script>alert(Você não tem permissão para alterar os dados deste usuário)</script>';
             }
         }
 

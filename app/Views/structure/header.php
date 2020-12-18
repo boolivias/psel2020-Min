@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
     <div class="row">
         <div class="col my-auto nav-img">
-            <img src="<?= base_url('writable/uploads/users/photo') . '/' . $user['user_urlPhoto'] ?>" alt="Foto de perfil" class="rounded-circle">
+            <img src="<?= base_url('public/storage/default.png') ?>" alt="Foto de perfil" class="rounded-circle">
         </div>
         <div class="col ml-3">
             <p class="user-info-label">Nome: <span class="user-info-values"><?= $user['user_name'] ?></span></p>

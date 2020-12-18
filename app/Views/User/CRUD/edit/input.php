@@ -9,7 +9,7 @@ $inputs = array(
                 'class_div' => array('col', 'form-group'),
                 'attr'      => array('no_values' => array('readonly')),
                 'name_ui'   => 'Nome',
-                'value'     => ''
+                'value'     => set_value('user_name')
             ),
             array(
                 'type'      => 'cpf',
@@ -17,8 +17,8 @@ $inputs = array(
                 'class'     => array('form-control'),
                 'class_div' => array('col', 'form-group'),
                 'attr'      => array('no_values' => array('readonly')),
+                'value'     => set_value('user_cpf'),
                 'name_ui'   => 'CPF',
-                'value'     => ''
             )
         )
     ),
@@ -31,7 +31,7 @@ $inputs = array(
                 'class_div' => array('col', 'form-group'),
                 'attr'      => array('no_values' => array('readonly')),
                 'name_ui'   => 'Email',
-                'value'     =>  ''
+                'value'     =>  set_value('user_email')
             )
         )
     ),

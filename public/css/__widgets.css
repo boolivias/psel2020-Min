@@ -108,6 +108,7 @@
 }
 
 .widget-lateral-options .list-group-item{
+    color: var(--text-color-gray-secondary)!important;
     background-color: transparent;
     opacity: 0.8;
     transition: all 0.3s ease-in-out;
@@ -115,6 +116,7 @@
 }
 
 .widget-lateral-options .list-group-item:hover{
+    text-decoration: none;
     opacity: 1;
     transform: scale(1.02);
 }

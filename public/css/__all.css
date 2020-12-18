@@ -23,5 +23,6 @@
 }
 
 .body.h-100{
-    height: calc(100vh - 3rem - 1rem)!important;
+    height: auto!important;
+    min-height: calc(100vh - 3rem - 1rem)!important;
 }
